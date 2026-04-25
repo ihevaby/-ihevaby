@@ -61,12 +61,12 @@
         
         .hero-gradient { background: radial-gradient(ellipse at 20% 50%, rgba(34, 197, 94, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(34, 197, 94, 0.05) 0%, transparent 50%), #050505; }
 
-        /* 🔥 СТАБИЛЬНЫЕ СТИЛИ ДЛЯ ПРЕВЬЮ И КНОПКИ */
-        .video-preview { opacity: 1 !important; visibility: visible !important; transition: opacity 0.3s ease, visibility 0.3s ease; }
-        .play-btn-wrapper { opacity: 1 !important; visibility: visible !important; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        /* 🔥 ТОЧНОЕ УПРАВЛЕНИЕ ЭЛЕМЕНТАМИ ВИДЕО */
+        .video-thumb { opacity: 1; visibility: visible; transition: opacity 0.2s ease, visibility 0.2s ease; }
+        .video-thumb.hidden-state { opacity: 0; visibility: hidden; pointer-events: none; }
         
-        /* Убираем синюю подсветку при тапе на мобильных */
-        button, a, video { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
+        .play-btn { opacity: 1; visibility: visible; transition: opacity 0.2s ease, visibility 0.2s ease; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+        .play-btn.hidden-state { opacity: 0; visibility: hidden; pointer-events: none; }
     </style>
 </head>
 <body>
@@ -173,18 +173,18 @@
                 <!-- Case 1 -->
                 <div class="card-hover">
                     <div class="relative rounded-2xl overflow-hidden bg-dark-700 border border-dark-400">
-                        <div class="aspect-video relative" id="vid-1">
-                            <video loop playsinline webkit-playsinline muted preload="metadata" class="w-full h-full object-cover absolute inset-0 z-0">
+                        <div class="aspect-video relative">
+                            <video loop playsinline webkit-playsinline muted preload="auto" class="absolute inset-0 w-full h-full object-cover z-0">
                                 <source src="assets/work1.mp4" type="video/mp4">
                             </video>
-                            <img src="assets/work1.jpg" alt="" loading="eager" class="video-preview absolute inset-0 w-full h-full object-cover z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20 pointer-events-none"></div>
-                            <button type="button" class="play-btn-wrapper absolute inset-0 flex items-center justify-center z-30 cursor-pointer">
+                            <img src="assets/work1.jpg" alt="" loading="eager" fetchpriority="high" class="video-thumb absolute inset-0 w-full h-full object-cover z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-20 pointer-events-none"></div>
+                            <button type="button" class="play-btn absolute inset-0 flex items-center justify-center z-30">
                                 <div class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center transition-transform active:scale-95">
                                     <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </button>
-                            <div class="absolute bottom-4 left-4 z-40"><span class="bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">Motion</span></div>
+                            <div class="absolute bottom-4 left-4 z-40 pointer-events-none"><span class="bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">Motion</span></div>
                         </div>
                     </div>
                 </div>
@@ -192,18 +192,18 @@
                 <!-- Case 2 -->
                 <div class="card-hover" style="transition-delay: 0.1s">
                     <div class="relative rounded-2xl overflow-hidden bg-dark-700 border border-dark-400">
-                        <div class="aspect-video relative" id="vid-2">
-                            <video loop playsinline webkit-playsinline muted preload="metadata" class="w-full h-full object-cover absolute inset-0 z-0">
+                        <div class="aspect-video relative">
+                            <video loop playsinline webkit-playsinline muted preload="auto" class="absolute inset-0 w-full h-full object-cover z-0">
                                 <source src="assets/work2.mp4" type="video/mp4">
                             </video>
-                            <img src="assets/work2.jpg" alt="" loading="eager" class="video-preview absolute inset-0 w-full h-full object-cover z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20 pointer-events-none"></div>
-                            <button type="button" class="play-btn-wrapper absolute inset-0 flex items-center justify-center z-30 cursor-pointer">
+                            <img src="assets/work2.jpg" alt="" loading="eager" fetchpriority="high" class="video-thumb absolute inset-0 w-full h-full object-cover z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-20 pointer-events-none"></div>
+                            <button type="button" class="play-btn absolute inset-0 flex items-center justify-center z-30">
                                 <div class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center transition-transform active:scale-95">
                                     <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </button>
-                            <div class="absolute bottom-4 left-4 z-40"><span class="bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">Motion</span></div>
+                            <div class="absolute bottom-4 left-4 z-40 pointer-events-none"><span class="bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">Motion</span></div>
                         </div>
                     </div>
                 </div>
@@ -211,18 +211,18 @@
                 <!-- Case 3 -->
                 <div class="card-hover" style="transition-delay: 0.2s">
                     <div class="relative rounded-2xl overflow-hidden bg-dark-700 border border-dark-400">
-                        <div class="aspect-video relative" id="vid-3">
-                            <video loop playsinline webkit-playsinline muted preload="metadata" class="w-full h-full object-cover absolute inset-0 z-0">
+                        <div class="aspect-video relative">
+                            <video loop playsinline webkit-playsinline muted preload="auto" class="absolute inset-0 w-full h-full object-cover z-0">
                                 <source src="assets/work3.mp4" type="video/mp4">
                             </video>
-                            <img src="assets/work3.jpg" alt="" loading="eager" class="video-preview absolute inset-0 w-full h-full object-cover z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20 pointer-events-none"></div>
-                            <button type="button" class="play-btn-wrapper absolute inset-0 flex items-center justify-center z-30 cursor-pointer">
+                            <img src="assets/work3.jpg" alt="" loading="eager" fetchpriority="high" class="video-thumb absolute inset-0 w-full h-full object-cover z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-20 pointer-events-none"></div>
+                            <button type="button" class="play-btn absolute inset-0 flex items-center justify-center z-30">
                                 <div class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center transition-transform active:scale-95">
                                     <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </button>
-                            <div class="absolute bottom-4 left-4 z-40"><span class="bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">Motion</span></div>
+                            <div class="absolute bottom-4 left-4 z-40 pointer-events-none"><span class="bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">Motion</span></div>
                         </div>
                     </div>
                 </div>
@@ -230,18 +230,18 @@
                 <!-- Case 4 -->
                 <div class="card-hover" style="transition-delay: 0.3s">
                     <div class="relative rounded-2xl overflow-hidden bg-dark-700 border border-dark-400">
-                        <div class="aspect-video relative" id="vid-4">
-                            <video loop playsinline webkit-playsinline muted preload="metadata" class="w-full h-full object-cover absolute inset-0 z-0">
+                        <div class="aspect-video relative">
+                            <video loop playsinline webkit-playsinline muted preload="auto" class="absolute inset-0 w-full h-full object-cover z-0">
                                 <source src="assets/work4.mp4" type="video/mp4">
                             </video>
-                            <img src="assets/work4.jpg" alt="" loading="eager" class="video-preview absolute inset-0 w-full h-full object-cover z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20 pointer-events-none"></div>
-                            <button type="button" class="play-btn-wrapper absolute inset-0 flex items-center justify-center z-30 cursor-pointer">
+                            <img src="assets/work4.jpg" alt="" loading="eager" fetchpriority="high" class="video-thumb absolute inset-0 w-full h-full object-cover z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-20 pointer-events-none"></div>
+                            <button type="button" class="play-btn absolute inset-0 flex items-center justify-center z-30">
                                 <div class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center transition-transform active:scale-95">
                                     <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </button>
-                            <div class="absolute bottom-4 left-4 z-40"><span class="bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">Motion</span></div>
+                            <div class="absolute bottom-4 left-4 z-40 pointer-events-none"><span class="bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">Motion</span></div>
                         </div>
                     </div>
                 </div>
@@ -423,9 +423,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Scroll Animations
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { 
-                    if (entry.isIntersecting) entry.target.classList.add('visible'); 
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
             }, { threshold: 0.1 });
             document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
@@ -455,73 +453,49 @@
                 });
             });
 
-            // 🔥 НАДЕЖНАЯ ЛОГИКА ВИДЕО ДЛЯ ВСЕХ УСТРОЙСТВ
+            // 🔥 ЖЕЛЕЗОБЕТОННАЯ ЛОГИКА ВИДЕО
             document.querySelectorAll('.card-hover').forEach((card) => {
-                const btn = card.querySelector('.play-btn-wrapper');
+                const btn = card.querySelector('.play-btn');
                 const video = card.querySelector('video');
-                const preview = card.querySelector('.video-preview');
+                const thumb = card.querySelector('.video-thumb');
 
-                if (!video || !preview || !btn) return;
+                if (!btn || !video || !thumb) return;
 
-                const hideUI = () => {
-                    preview.style.opacity = '0';
-                    preview.style.visibility = 'hidden';
-                    btn.style.opacity = '0';
-                    btn.style.visibility = 'hidden';
-                    btn.style.pointerEvents = 'none';
+                const hideOverlay = () => {
+                    btn.classList.add('hidden-state');
+                    thumb.classList.add('hidden-state');
                 };
 
-                const showUI = () => {
-                    preview.style.opacity = '1';
-                    preview.style.visibility = 'visible';
-                    btn.style.opacity = '1';
-                    btn.style.visibility = 'visible';
-                    btn.style.pointerEvents = 'auto';
+                const showOverlay = () => {
+                    btn.classList.remove('hidden-state');
+                    thumb.classList.remove('hidden-state');
                     video.muted = true;
                 };
 
-                btn.addEventListener('click', (e) => {
+                const handlePlay = (e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Остановить все остальные видео
-                    document.querySelectorAll('video').forEach(otherVid => {
-                        if (otherVid !== video && !otherVid.paused) {
-                            otherVid.pause();
-                            otherVid.muted = true;
-                            const otherCard = otherVid.closest('.card-hover');
-                            if (otherCard) {
-                                const otherPreview = otherCard.querySelector('.video-preview');
-                                const otherBtn = otherCard.querySelector('.play-btn-wrapper');
-                                if (otherPreview) otherPreview.style.opacity = '1';
-                                if (otherBtn) otherBtn.style.opacity = '1';
+                    // Остановить другие
+                    document.querySelectorAll('video').forEach(v => {
+                        if (v !== video && !v.paused) {
+                            v.pause(); v.muted = true;
+                            const otherCard = v.closest('.card-hover');
+                            if(otherCard) {
+                                otherCard.querySelector('.play-btn')?.classList.remove('hidden-state');
+                                otherCard.querySelector('.video-thumb')?.classList.remove('hidden-state');
                             }
                         }
                     });
 
-                    // Запуск текущего
                     video.muted = false;
-                    video.play().then(() => {
-                        hideUI();
-                    }).catch(err => {
-                        console.warn('Autoplay blocked:', err);
-                        showUI();
-                    });
-                });
+                    video.play().then(hideOverlay).catch(() => showOverlay());
+                };
 
-                // Пауза по клику на видео
-                video.addEventListener('click', () => {
-                    if (!video.paused) {
-                        video.pause();
-                        showUI();
-                    }
-                });
-
-                // Видео закончилось
-                video.addEventListener('ended', () => {
-                    showUI();
-                    video.currentTime = 0;
-                });
+                btn.addEventListener('click', handlePlay);
+                btn.addEventListener('touchend', handlePlay); // Мобильный тач
+                video.addEventListener('click', () => { if(!video.paused) { video.pause(); showOverlay(); } });
+                video.addEventListener('ended', () => { showOverlay(); video.currentTime = 0; });
             });
         });
     </script>
